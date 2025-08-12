@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 #root {
   max-width: 1280px;
@@ -60,3 +60,27 @@ div{
 div:hover {
   transform: scale(1.02);
 }
+
+/* cardStyle {
+  border: "1px solid #ccc",
+  borderRadius: "12px",
+  padding: "16px",
+  margin: "12px 0",
+  boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+  backgroundColor: "#fff",
+};
+
+habitItemStyle  {
+  marginBottom: "10px",
+  border: "1px solid #ccc",
+  padding: "10px",
+  borderRadius: "5px",
+};
+
+doneHabitItemStyle  {
+  marginBottom: "10px",
+  border: "1px solid green",
+  padding: "10px",
+  borderRadius: "5px",
+  backgroundColor: "#e0ffe0",
+}; */
