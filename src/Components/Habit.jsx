@@ -217,7 +217,7 @@ export const Habit = () => {
   });
 
   const [savedHabits, setSavedHabits] = useState([]);
-  const [storage, setStorage] = useState([]);
+
   const [flag,setflag]= useState(false)
 
   // handle form inputs
@@ -295,32 +295,32 @@ const updatePerDay = (id, newValue) => {
 
   const [habitList, setHabitList] = useState([]);
 
-
+ 
 
   // Whenever savedHabits changes, build the list
-  useEffect(() => {
+
+ 
+const [storage, setStorage] = useState(()=>JSON.parse(localStorage.getItem("habits"))||[]);
+
+  
+    useEffect(() => {
     const listItems = savedHabits.map((habit) => (
       <li key={habit.id}>{habit.habitName}</li>
     ));
     setHabitList(listItems);
+    }, [savedHabits]); // runs every time savedHabits changes
 
-    localStorage.setItem("habits", JSON.stringify(savedHabits));
-    
-  }, [savedHabits]); // runs every time savedHabits changes
- // show the storage 
-  useEffect(() => {
-  const storedHabits = localStorage.getItem("habits");
-  if (storedHabits) {
-    setStorage(JSON.parse(storedHabits));
-  }
-    }, [flag]);
-  
-  
   // button flag 
   
   const btnF= ()  =>{
     setflag(prev=>!prev)
-  }
+    localStorage.setItem("habits",JSON.stringify(savedHabits));
+    const storedHabits = localStorage.getItem("habits");
+    if (storedHabits) {
+    setStorage(JSON.parse(storedHabits));
+    }
+    };
+
   return (
     <>
       <div>
@@ -435,7 +435,7 @@ const updatePerDay = (id, newValue) => {
 
     <div>
         <h3>sorage data</h3>
-        <button onClick={()=>btnF()}>show the storage data</button>
+        <button onClick={btnF}>update the storage data</button>
         <ul>{storage.map(data=>(
     <li key={data.id}>{data.habitName}</li>))}</ul>
     </div>
