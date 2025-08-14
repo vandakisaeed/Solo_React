@@ -287,22 +287,12 @@ const updatePerDay = (id, newValue) => {
     })
   );
 };
-
-
   // derived counts
   const activeCount = savedHabits.filter((h) => !h.done).length;
   const doneCount = savedHabits.filter((h) => h.done).length;
 
-  const [habitList, setHabitList] = useState([]);
-
- 
-
   // Whenever savedHabits changes, build the list
-
- 
-const [storage, setStorage] = useState(()=>JSON.parse(localStorage.getItem("habits"))||[]);
-
-  
+    const [habitList, setHabitList] = useState([]);
     useEffect(() => {
     const listItems = savedHabits.map((habit) => (
       <li key={habit.id}>{habit.habitName}</li>
@@ -310,8 +300,8 @@ const [storage, setStorage] = useState(()=>JSON.parse(localStorage.getItem("habi
     setHabitList(listItems);
     }, [savedHabits]); // runs every time savedHabits changes
 
-  // button flag 
-  
+  // update the storage 
+  const [storage, setStorage] = useState(()=>JSON.parse(localStorage.getItem("habits"))||[]);
   const btnF= ()  =>{
     setflag(prev=>!prev)
     localStorage.setItem("habits",JSON.stringify(savedHabits));
